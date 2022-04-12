@@ -20,7 +20,7 @@ export default class Menu extends Component {
           <img src="dist/img/user2-160x160.jpg" className="img-circle elevation-2" alt="User Image" />
         </div>
         <div className="info">
-          <a href="#" className="d-block">Sisman Khalas</a>
+          <a href="" className="d-block">Sisman Khalas</a>
         </div>
       </div>
       {/* Sidebar Menu */}
@@ -29,7 +29,7 @@ export default class Menu extends Component {
           {/* Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library */}
           <li className="nav-item has-treeview menu-open">
-            <Link to="/dashbord2" className="nav-link active">
+            <Link to="dashbord2" className="nav-link active">
               <i className="nav-icon fas fa-tachometer-alt" />
               <p>
                 Dashboard
@@ -38,7 +38,7 @@ export default class Menu extends Component {
             </Link>
           </li>   
           <li class="nav-item">
-            <Link to="/getrole" class="nav-link active">
+            <Link to="getrole" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 ROLE
@@ -46,7 +46,7 @@ export default class Menu extends Component {
             </Link>
           </li>
           <li class="nav-item">
-            <Link to="/vendorrequest" class="nav-link active">
+            <Link to="vendorrequest" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Vendor Requests
@@ -59,7 +59,7 @@ export default class Menu extends Component {
           <li className="nav-header">ADD DATA</li>
           
           <li className="nav-item has-treeview">
-            <Link to="/dashbord" className="nav-link">
+            <Link to="" className="nav-link">
               <i className="nav-icon far fa-envelope" />
               <p>
                 Role
@@ -68,13 +68,13 @@ export default class Menu extends Component {
             </Link>
             <ul className="nav nav-treeview">
               <li className="nav-item">
-                <Link to="/dashbord/user" className="nav-link">
+                <Link to="user" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>User</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/getvendor" className="nav-link">
+              <Link to="getvendor" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Vendor</p>
                 </Link>
@@ -83,7 +83,7 @@ export default class Menu extends Component {
             </ul>
           </li>
           <li className="nav-item has-treeview">
-            <a href="/dashbord" className="nav-link">
+            <a href="" className="nav-link">
               <i className="nav-icon far fa-envelope" />
               <p>
                 ADD
@@ -92,55 +92,55 @@ export default class Menu extends Component {
             </a>
             <ul className="nav nav-treeview">
               <li className="nav-item">
-              <Link to="/addvendor" className="nav-link">
+              <Link to="addvendor" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Vendor</p>
                 </Link>
               </li>  
               <li className="nav-item">
-              <Link to="/addproduct" className="nav-link">
+              <Link to="addproduct" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Product</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addcategories" className="nav-link">
+              <Link to="addcategories" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Category</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addsubcategory" className="nav-link">
+              <Link to="addsubcategory" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Sub-Category</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addbrand" className="nav-link">
+              <Link to="addbrand" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Brand</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addvendor" className="nav-link">
+              <Link to="addvendor" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>City</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addvendor" className="nav-link">
+              <Link to="addvendor" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>State</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addvendor" className="nav-link">
+              <Link to="addorder" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Order</p>
                 </Link>
               </li>
               <li className="nav-item">
-              <Link to="/addvendor" className="nav-link">
+              <Link to="addvendor" className="nav-link">
                   <i className="far fa-circle nav-icon" />
                   <p>Offer</p>
                 </Link>
@@ -148,220 +148,54 @@ export default class Menu extends Component {
             </ul>
           </li>
           <li className="nav-item has-treeview">
-            <Link to="/productlist" className="nav-link">
+            <Link to="getorder" className="nav-link">
               <i className="nav-icon fas fa-book" />
               <p>
-                Product
+                Order List
                 <i className="fas fa-angle-left right" />
               </p>
             </Link>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <Link to='/productlist' className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Product List</p>
-                </Link>
-              </li>
-              
-            </ul>
+            
           </li>
           <li className="nav-item has-treeview">
-            <Link to="/categorylist" className="nav-link">
+            <Link to="productlist" className="nav-link">
               <i className="nav-icon fas fa-book" />
               <p>
-                Category
+                Product List
                 <i className="fas fa-angle-left right" />
               </p>
             </Link>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <Link to='/categorylist' className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Category List</p>
-                </Link>
-              </li>
-              
-            </ul>
+            
           </li>
           <li className="nav-item has-treeview">
-            <Link to="/getsubcategory" className="nav-link">
+            <Link to="categorylist" className="nav-link">
               <i className="nav-icon fas fa-book" />
               <p>
-                Sub-Category
+                Category List
                 <i className="fas fa-angle-left right" />
               </p>
             </Link>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <Link to='/getsubcategory' className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Sub-Category List</p>
-                </Link>
-              </li>
-              
-            </ul>
+            
           </li>
           <li className="nav-item has-treeview">
-            <Link to="/getbrand" className="nav-link">
+            <Link to="getsubcategory" className="nav-link">
               <i className="nav-icon fas fa-book" />
               <p>
-                Brand
+                Sub-Category List
                 <i className="fas fa-angle-left right" />
               </p>
             </Link>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <Link to='/getbrand' className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Brand List</p>
-                </Link>
-              </li>
-              
-            </ul>
+            
           </li>
           <li className="nav-item has-treeview">
-            <a href="#" className="nav-link">
-              <i className="nav-icon far fa-plus-square" />
+            <Link to="getbrand" className="nav-link">
+              <i className="nav-icon fas fa-book" />
               <p>
-                Extras
+                Brand List
                 <i className="fas fa-angle-left right" />
               </p>
-            </a>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <a href="pages/examples/login.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Login</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/register.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Register</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/forgot-password.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Forgot Password</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/recover-password.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Recover Password</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/lockscreen.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/language-menu.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/404.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/500.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="pages/examples/pace.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Pace</p>
-                </a>
-              </li>
-              
-              <li className="nav-item">
-                <a href="starter.html" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        
-          <li className="nav-header">MULTI LEVEL EXAMPLE</li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <i className="fas fa-circle nav-icon" />
-              <p>Level 1</p>
-            </a>
-          </li>
-          <li className="nav-item has-treeview">
-            <a href="#" className="nav-link">
-              <i className="nav-icon fas fa-circle" />
-              <p>
-                Level 1
-                <i className="right fas fa-angle-left" />
-              </p>
-            </a>
-            <ul className="nav nav-treeview">
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Level 2</p>
-                </a>
-              </li>
-              <li className="nav-item has-treeview">
-                <a href="#" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>
-                    Level 2
-                    <i className="right fas fa-angle-left" />
-                  </p>
-                </a>
-                <ul className="nav nav-treeview">
-                  <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      <i className="far fa-dot-circle nav-icon" />
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      <i className="far fa-dot-circle nav-icon" />
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      <i className="far fa-dot-circle nav-icon" />
-                      <p>Level 3</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="far fa-circle nav-icon" />
-                  <p>Level 2</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link">
-              <i className="fas fa-circle nav-icon" />
-              <p>Level 1</p>
-            </a>
+            </Link>
+            
           </li>
           
         </ul>

@@ -28,7 +28,7 @@ export const GetProduct = () => {
   return (
     <div>
 
-      <div className="content-wrapper card-body table-resposive col-md-10">
+      <div className="content-wrapper card-body table-resposive ">
       <h1>This is Product List</h1> 
         <h3 className="row-1 d-inline-flex">Products</h3>
         <Link to="/addproduct" className="btn btn-info float-right">
@@ -56,7 +56,7 @@ export const GetProduct = () => {
                   <td>{product.subcategory.subcategoryName}</td>
                   <td>{product.brand.brandName}</td>
                   <td><button onClick={() => DeleteData(product._id)} className='btn btn-danger'>DELETE</button>
-                  <Link to={`/productlist/updateproduct/${product._id}`} className="btn btn-primary">UPDATE</Link>
+                  <Link to={`updateproduct/${product._id}`} className="btn btn-primary">UPDATE</Link>
                   </td>
                 </tr>
               );

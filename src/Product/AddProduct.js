@@ -25,9 +25,7 @@ export const AddProduct = () => {
     console.log("cat id:", e.target.value);
     setcategory(e.target.value)
 
-    await axios
-      .get(`http://localhost:4001/subcategoriesbycategory/${catid}`)
-      .then((res) => {
+    await axios.get(`http://localhost:4001/subcategoriesbycategory/${catid}`).then((res) => {
         setsubcategoryList(res.data.data);
         console.log("sub cat data ", res.data.data);
       });

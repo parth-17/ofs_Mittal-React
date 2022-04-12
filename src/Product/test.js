@@ -1,192 +1,111 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+// import React, { useState } from 'react'
+import {  Link, useNavigate } from 'react-router-dom'
+import "../Login/Login.css";
+import { useState } from 'react';
+import axios from 'axios';
 
-export const UpdateProject_Module = () => {
-  const id = useParams().id;
+export const Login = () => {
 
-  const [projectList, setprojectList] = useState([]);
-  const [statusList, setstatusList] = useState([]);
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+    var navigate = useNavigate();
 
-  const [project_moduleList, setproject_moduleList] = useState("");
-  const [project, setproject] = useState(project_moduleList.project);
-  const [moduleName, setmoduleName] = useState(project_moduleList.moduleName);
-  const [projectModuleDescription, setprojectModuleDescription] = useState(
-    project_moduleList.projectModuleDescription
-  );
-  const [projectModuleEstimatedHours, setprojectModuleEstimatedHours] =
-    useState(project_moduleList.projectModuleEstimatedHours);
-  const [status, setstatus] = useState(project_moduleList.status);
-  const [projectModuleStartDate, setprojectModuleStartDate] = useState(
-    project_moduleList.projectModuleStartDate
-  );
+    const emailChangeHandler=(e)=>{
+        setemail(e.target.value)
+    }
+    const passwordChangeHandler=(e)=>{
+        setpassword(e.target.value)
+    }
+    const submitForm = async (e)=>{
+        e.preventDefault();
 
-  const getProject_ModuleData = () => {
-    axios.get(`http://localhost:4000/project_modules/${id}`).then((res) => {
-      console.log("axios.get called in updATE PROJECT MODULE", res.data.data);
-      setproject_moduleList(res.data.data);
-    });
+        var loginData={
+            email:email,
+            password:password
+        }
 
-    axios.get(`http://localhost:4000/projects`).then((res) => {
-      setprojectList(res.data.data);
-    });
+        await axios.post(`http://localhost:4000/login`,loginData).then((res)=>{
 
-    axios.get(`http://localhost:4000/status`).then((res) => {
-      setstatusList(res.data.data);
-    });
-  };
 
-  useEffect(() => {
-    getProject_ModuleData();
-  }, []);
+            if(res.data.status == 200){
 
-  console.log("project modlu list", project_moduleList);
+                console.log("axios post called",res.data.data)
 
-  const update = (e) => {
-    e.preventDefault();
+                console.log("email :",res.data.data.email);
+                console.log("roleName :",res.data.data.role.roleName);
 
-    var updatedData = {
-      project: project,
-      moduleName: moduleName,
-      projectModuleDescription: projectModuleDescription,
-      projectModuleEstimatedHours: projectModuleEstimatedHours,
-      status: status,
-      projectModuleStartDate: projectModuleStartDate,
-    };
+                localStorage.setItem('email',res.data.data.email)
+                localStorage.setItem('role',res.data.data.role.roleName)
 
-    axios
-      .put(`http://localhost:4000/project_modules/${id}`, updatedData)
-      .then((res) => {
-        alert("updated data....");
-      });
-  };
+                if(res.data.data.role._id === "620e00e5b93c9f525393f7ac")
+                {
+                    navigate('/AdminDashboard')
+                }
+                else if(res.data.data.role._id === "620e0102b93c9f525393f7b0")
+                {
+                    navigate('/ProjectManagerDashboard')
+                }
+                else if(res.data.data.role._id === "620e00f0b93c9f525393f7ae")
+                {
+                    navigate('/DeveloperDashboard')
+                }
+                
+            }
+            else{
+                console.log("Invalid credentials",res.data.data)
 
-  const projectChangeHandler = (e) => {
-    setproject(e.target.value);
-    console.log("project handler called");
-  };
+                alert("Invalid Credentials") 
+            }
 
-  const moduleNameChangeHandler = (e) => {
-    setmoduleName(e.target.value);
-  };
 
-  const projectModuleDescriptionChangeHandlers = (e) => {
-    setprojectModuleDescription(e.target.value);
-  };
 
-  const projectModuleEstimatedHoursChangeHandler = (e) => {
-    setprojectModuleEstimatedHours(e.target.value);
-  };
-
-  const statusChangeHandler = (e) => {
-    setstatus(e.target.value);
-  };
-
-  const projectModuleStartDateChangeHandler = (e) => {
-    setprojectModuleStartDate(e.target.value);
-  };
-
-  console.log("projectModule: ", project_moduleList.moduleName);
+        })
+    }
   return (
-    <div className="content">
-      <div class="container-fluid">
-        {project_moduleList.project !== undefined &&
-        project_moduleList.status !== undefined ? (
-          <form onSubmit={update}>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Project</label>
-              <select
-                class="form-control"
-                onChange={(e) => {
-                  projectChangeHandler(e);
-                }}
-              >
-                {projectList.map((project_module) => {
-                  return (
-                    <option value={project_module._id}>
-                      {project_module.projectTitle}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">ModuleName</label>
-              <input
-                type="text"
-                class="form-control"
-                onChange={(e) => {
-                  moduleNameChangeHandler(e);
-                }}
-                defaultValue={project_moduleList.moduleName}
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Description</label>
-              <input
-                type="text"
-                class="form-control"
-                onChange={(e) => {
-                  projectModuleDescriptionChangeHandlers(e);
-                }}
-                defaultValue={project_moduleList.projectModuleDescription}
-              />
-            </div>
 
-            <div class="form-group">
-              <label for="exampleInputPassword1">Estimated Hours</label>
-              <input
-                type="text"
-                class="form-control"
-                onChange={(e) => {
-                  projectModuleEstimatedHoursChangeHandler(e);
-                }}
-                defaultValue={project_moduleList.projectModuleEstimatedHours}
-              />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Status</label>
 
-              <select
-                class="form-control"
-                onChange={(e) => {
-                  statusChangeHandler(e);
-                }}
-              >
-                {statusList.map((status) => {
-                  return (
-                    <option value={status._id}>{status.statusName}</option>
-                  );
-                })}
-              </select>
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+            <div class="card card0 border-0">
+                <div class="row d-flex">
+                    <div class="col-lg-6">
+                        <div class="card1 pb-5">
+                            <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="../assets/img/login3.jpg" class="image1"/> </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card2 card border-0 px-4 py-5">
+                            <div class="row mb-4 px-3">
+                                <h2 class="mb-0 mr-4 mt-2">Login</h2>
+                            </div>
+                            <form onSubmit={submitForm}>
+                            <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Email Address</h6>
+                            </label>
+                             <input class="mb-4 " type="email" name="email" onChange={(e)=>{emailChangeHandler(e)}} placeholder="Enter a valid email address" required />
+                             
+                              </div>
+                            <div class="row px-3"> <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label> <input type="password" name="password" onChange={(e)=>{passwordChangeHandler(e)}}  placeholder="Enter password" required/> </div>
+                            
+                            <div class="row px-3 mb-4">
+                                <a href="#" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                            </div>
+                            <div class="row mb-3 px-3">
+                                {/* <Link to="/AdminDashboard">  */}
+                                <button type='submit' className="btn btn-primary text-center">Login</button>
+                                {/* </Link> */}
+                             {/* <button type="submit" class="btn btn-primary text-center" onClick={onClickHandler}>Login</button> */}
+                              </div>
+                              </form>
+                            <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <Link to="/Registration" class="text-danger ">Register</Link></small> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-blue py-4">
+                    <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2022. All rights reserved.</small>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Start Date</label>
-              <input
-                type="text"
-                class="form-control"
-                onChange={(e) => {
-                  projectModuleStartDateChangeHandler(e);
-                }}
-                defaultValue={project_moduleList.projectModuleStartDate}
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-            <Link to="/AdminDashboard/Project_ModuleTable">
-              <button type="button" className="btn btn-warning">
-                Go Back
-              </button>
-            </Link>
-          </form>
-        ) : (
-          "loading..."
-        )}
-      </div>
-    </div>
-  );
-};
+        </div>
+         

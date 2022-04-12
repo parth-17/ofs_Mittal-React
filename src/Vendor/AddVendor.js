@@ -50,7 +50,8 @@ export const AddVendor = () => {
 //     AddVendor();
 //   }, []);
   return (
-    <div  className="container">
+    <div  className="container content-wrapper card-body">
+      <h3>Add Vendor :-</h3>
       <form onSubmit={submit}>
         <div className=" form-group">
           <label>First Name</label>

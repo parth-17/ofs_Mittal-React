@@ -27,7 +27,7 @@ export const GetSubCategory = () => {
     <div className="content-wrapper card-body table-resposive col-md-10">
     <h1>This is Sub-Category List</h1> 
       <h3 className="row-1 d-inline-flex">Sub-Category</h3>
-      <Link to="/addsubcategory" className="btn btn-info float-right">
+      <Link to="addsubcategory" className="btn btn-info float-right">
         Add Sub-Category
       </Link>
       <table className="table table-hover table-striped">
@@ -52,7 +52,7 @@ export const GetSubCategory = () => {
 
                 <td><button onClick={() => DeleteData(subcategory._id)} className='btn btn-danger'>DELETE</button>
 
-                <Link to={`/getsubcategory/updatecategory/${subcategory._id}`} className="btn btn-primary">UPDATE</Link>
+                <Link to={`updatecategory/${subcategory._id}`} className="btn btn-primary">UPDATE</Link>
                 </td>
               </tr>
             );
