@@ -14,7 +14,7 @@ export const AddProduct = () => {
   const [brand, setbrand] = useState(brandList.brandName);
 
   const getData = async () => {
-    await axios.get("http://localhost:4000/categories").then((res) => {
+    await axios.get("http://localhost:4001/categories").then((res) => {
       setcategoryList(res.data.data);
       console.log("c-a-t-----", res.data.data);
     });
@@ -22,25 +22,25 @@ export const AddProduct = () => {
 
   const CategoryListOnChangeHandler = async (e) => {
     var catid = e.target.value;
-    console.log("cat id:", e.target.value);
+    console.log("catid:", e.target.value);
     setcategory(e.target.value);
 
     await axios
-      .get(`http://localhost:4000/subcategoriesbycategory/${catid}`)
+      .get(`http://localhost:4001/subcategoriesbycategory/${catid}`)
       .then((res) => {
         setsubcategoryList(res.data.data);
         console.log("sub cat data ", res.data.data);
       });
   };
 
-  const subcategoryOnHangeHandler = (e) => {
+  const subcategoryOnChangeHandler = (e) => {
     console.log("sub-cate", e.target.value);
     setsubcategory(e.target.value);
   };
 
   const getbrand = async () => {
-    axios.get("http://localhost:4000/brands").then((res) => {
-      console.log("BRANd-----", res.data.data);
+    axios.get("http://localhost:4001/brands").then((res) => {
+      console.log("BRAND-----", res.data.data);
       setbrandList(res.data.data);
     });
   };
@@ -66,7 +66,7 @@ export const AddProduct = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:4000/products", Data).then((res) => {
+    axios.post("http://localhost:4001/products", Data).then((res) => {
       console.log(res.status);
       console.log(res.data);
       alert("Product Added....");
@@ -124,7 +124,7 @@ export const AddProduct = () => {
               data-select2-id="9"
               tabindex="-1"
               aria-hidden="true"
-              onChange={(e) => subcategoryOnHangeHandler(e)}
+              onChange={(e) => subcategoryOnChangeHandler(e)}
             >
               {subcategoryList.map((subcategory) => {
                 return (

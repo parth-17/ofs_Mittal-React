@@ -32,7 +32,6 @@ export const GetVendor = () => {
 
   return (
     <div>
-
       <div className=" content-wrapper card-body table-responsive col-md-10">
         <h3 className="row-1 d-inline-flex"> Vendor</h3>
         <button className="btn btn-info float-right">Add Vendor</button>
@@ -51,8 +50,7 @@ export const GetVendor = () => {
           </thead>
           <tbody>
             {vendorList.map((vendor) => {
-              if(vendor.isActive==true)
-              {
+              if (vendor.isActive == true) {
                 return (
                   <tr>
                     <th scope="row">{vendor._id}</th>
@@ -75,7 +73,7 @@ export const GetVendor = () => {
                       >
                         UPDATE
                       </Link>
-  
+
                       <button className="btn btn-warning btn-round waves-effect  ">
                         <Link to="/vendordetails">View Details</Link>
                       </button>
@@ -83,7 +81,6 @@ export const GetVendor = () => {
                   </tr>
                 );
               }
-              
             })}
           </tbody>
         </table>

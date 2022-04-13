@@ -6,14 +6,14 @@ export const GetProduct = () => {
   const [productList, setproductList] = useState([]);
 
   const getData = async () => {
-    await axios.get("http://localhost:4000/products").then((res) => {
+    await axios.get("http://localhost:4001/products").then((res) => {
       console.log(res.data.data);
       setproductList(res.data.data);
     });
   };
 
   const DeleteData = (_id) => {
-    axios.delete(`http://localhost:4000/products/${_id}`).then((res) => {
+    axios.delete(`http://localhost:4001/products/${_id}`).then((res) => {
       alert(res.data);
       getData();
     });
@@ -37,7 +37,7 @@ export const GetProduct = () => {
               <th scope="col">Id</th>
               <th scope="col">Product Name</th>
               <th scope="col">Price </th>
-              {/* <th scope="col">Category</th> */}
+              <th scope="col">Category</th>
               <th scope="col">Sub-Category</th>
               <th scope="col">Brand</th>
             </tr>
@@ -48,10 +48,10 @@ export const GetProduct = () => {
                 <tr>
                   <th scope="row">{product._id}</th>
                   <td>{product.productName}</td>
-                  <td>{product.price}</td>
-                  <td>{product.subcategory}</td>
-                  <td>{product.category}</td>
-                  <td>{product.brand}</td>
+                  <td>{product.baseprice}</td>
+                  <td>{product.category.categoryName}</td>
+                  <td>{product.subcategory.subcategoryName}</td>
+                  <td>{product.brand.brandName}</td>
                   <td>
                     <button
                       onClick={() => DeleteData(product._id)}

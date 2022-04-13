@@ -89,13 +89,13 @@ export const Adduser = () => {
       isActive: isActive,
     };
 
-    if (role == "62493c6379dd4902ea8995bc") {
+    if (role === "62493c6379dd4902ea8995bc") {
       axios.post("http://localhost:4001/vendor", Data2).then((res) => {
         console.log(res.status);
         console.log(res.data);
 
-        console.log("new data: ",Data2)
-        toast.success('Vendor Added...', {
+        console.log("new data: ", Data2);
+        toast.success("Vendor Added...", {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -103,7 +103,7 @@ export const Adduser = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
       });
     } else {
       axios.post("http://localhost:4001/users", Data1).then((res) => {
@@ -190,7 +190,7 @@ export const Adduser = () => {
             >
               <option>Select---</option>
               {roleList.map((role) => {
-                if (role._id != "620c892f63551bfea59868d3") {
+                if (role._id !== "620c892f63551bfea59868d3") {
                   return (
                     <option value={role._id} data-select2-id="3">
                       {role.roleName}
@@ -201,7 +201,7 @@ export const Adduser = () => {
             </select>
           </div>
 
-          {role == "62493c6379dd4902ea8995bc" ? (
+          {role === "62493c6379dd4902ea8995bc" ? (
             <>
               <div className="form-group">
                 <label>Address</label>

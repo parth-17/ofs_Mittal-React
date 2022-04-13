@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./png/logo.png";
 
-
 export const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -17,7 +16,6 @@ export const Login = () => {
   const passwordChangeHandler = (e) => {
     setpassword(e.target.value);
   };
-
 
   const submit = async (e) => {
     e.preventDefault();
@@ -37,22 +35,18 @@ export const Login = () => {
 
         localStorage.setItem("email", res.data.data.email);
         localStorage.setItem("roleName", res.data.data.role.roleName);
-        localStorage.setItem("roleId", res.data.data.role._id)
+        localStorage.setItem("roleId", res.data.data.role._id);
 
-        if (res.data.data.role._id == "620c892f63551bfea59868d3") {
+        if (res.data.data.role._id == "62568d0c6faee3e8fa15a433") {
           navigate("/Admindashbord");
+        } else if (res.data.data.role._id == "62568ccd6faee3e8fa15a42e") {
+          navigate("/VendorDashbord");
         }
-
-        else if(res.data.data.role._id == "62493c6379dd4902ea8995bc"){
-          navigate("/VendorDashbord")
-        }
-
       } else {
         console.log("Invalid credentials", res.data.data);
         alert("Invalid Credentials");
       }
     });
-    
   };
 
   return (
@@ -199,7 +193,6 @@ export const Login = () => {
                           >
                             LOGIN
                           </button>
-          
                         </div>
                       </div>
                       <p className="text-inverse text-left">
