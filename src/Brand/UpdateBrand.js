@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Header from '../Admin_Componant/Header';
-import Menu from '../Admin_Componant/Menu';
 
 export const UpdateBrand = () => {
     var id = useParams().id;
@@ -34,8 +32,6 @@ export const UpdateBrand = () => {
     };
   return (
     <div>
-        <Header/>
-        <Menu/>
         <div className=" content-wrapper card-body">
     <h1>This is Update Brand </h1> 
     <form onSubmit={update}>

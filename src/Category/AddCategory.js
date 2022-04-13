@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Header from "../Admin_Componant/Header";
-import Menu from "../Admin_Componant/Menu";
 
 export const AddCategory = () => {
   const [categoryName, setcategoryName] = useState("");
@@ -20,8 +18,6 @@ export const AddCategory = () => {
   };
   return (
     <div>
-      <Header />
-      <Menu />
       <div className=" content-wrapper card-body">
     <h1>Add Category :- </h1> 
        

@@ -1,7 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Header from "../Admin_Componant/Header";
-import Menu from "../Admin_Componant/Menu";
 
 export const AddBrand = () => {
     const [brandName, setbrandName] = useState("");
@@ -20,8 +18,6 @@ export const AddBrand = () => {
   };
   return (
     <div>
-      <Header />
-      <Menu />
       <div className=" content-wrapper card-body">
         <form onSubmit={submit}>
           <div className=" form-group">

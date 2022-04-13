@@ -1,8 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Admin_Componant/Header'
-import Menu from '../Admin_Componant/Menu'
 
 
 export const GetCategory = () => {
@@ -27,9 +25,7 @@ export const GetCategory = () => {
     }, [])
     
   return (
-    <div>  <Header />
-    <Menu/>
-
+    <div>  
     <div className="content-wrapper card-body table-resposive col-md-10">
     <h1>This is Category List</h1> 
       <h3 className="row-1 d-inline-flex">Category</h3>

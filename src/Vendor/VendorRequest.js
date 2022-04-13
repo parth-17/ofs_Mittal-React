@@ -68,7 +68,7 @@ export const VendorRequest = () => {
                       DELETE
                     </button>
                     <Link
-                      to={`/getvendor/updatevendor/${vendor._id}`}
+                      to={`updatevendor/${vendor._id}`}
                       className="btn btn-primary"
                     >
                       UPDATE

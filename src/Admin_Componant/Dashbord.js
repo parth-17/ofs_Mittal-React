@@ -1,6 +1,4 @@
 import React from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import Header from "./Header";
 import Menu from "./Menu";
 import Footer from "./Footer";
@@ -32,6 +30,8 @@ import { GetBrand } from "../Brand/GetBrand";
 import { UpdateBrand } from "../Brand/UpdateBrand";
 import {Dashbord2} from '../Admin_Componant/Dashbord2'
 import { Adduser } from "../User/Adduser";
+import { GetOrder } from "./Order/GetOrder";
+import { OrderDetails } from "./Order/OrderDetails";
 
 export const Dashbord = () => {
   // const [roleList, setroleList] = useState([]);
@@ -51,45 +51,47 @@ export const Dashbord = () => {
       <Header />
       <Menu />
       <Routes>
-        <Route path='/dashbord2' element={<Dashbord2/>}></Route>
-        <Route path="/customersingup" element={<CustomerSingup />}></Route>
-        <Route path="/vendorsingup" element={<VendorSingup />}></Route>
-        <Route path="/addrole" element={<AddRole />}></Route>
-        <Route path="/getrole" element={<GetRole />}></Route>
-        <Route path="/getrole/updaterole/:id" element={<UpdateRole />}></Route>
-        <Route path='/adduser' element={<Adduser/>}></Route>
-        <Route path="/dashbord/user" element={<GetUsers />}></Route>
-        <Route path="/userdetails" element={<User_details />}></Route>
-        <Route path="/user/updateuser/:userId" element={<Updateuser />}></Route>
-        <Route path="/addvendor" element={<AddVendor />}></Route>
-        <Route path="/getvendor" element={<GetVendor />}></Route>
+        <Route path='dashbord2' element={<Dashbord2/>}></Route>
+        <Route path="customersingup" element={<CustomerSingup />}></Route>
+        <Route path="vendorsingup" element={<VendorSingup />}></Route>
+        <Route path="addrole" element={<AddRole />}></Route>
+        <Route path="getrole" element={<GetRole />}></Route>
+        <Route path="getrole/updaterole/:id" element={<UpdateRole />}></Route>
+        <Route path='user/adduser' element={<Adduser/>}></Route>
+        <Route path='adduser' element={<Adduser/>}></Route>
+        <Route path="user" element={<GetUsers />}></Route>
+        <Route path="user/userdetails" element={<User_details />}></Route>
+        <Route path="user/updateuser/:userId" element={<Updateuser />}></Route>
+        <Route path="addvendor" element={<AddVendor />}></Route>
+        <Route path="getvendor" element={<GetVendor />}></Route>
         <Route
-          path="/getvendor/updatevendor/:id"
+          path="getvendor/updatevendor/:id"
           element={<UpdateVendor />}
         ></Route>
-        <Route path="/vendorrequest" element={<VendorRequest />}></Route>
-        <Route path="/productlist" element={<GetProduct />}></Route>
-        <Route path="/addproduct" element={<AddProduct />}></Route>
+        <Route path="vendorrequest" element={<VendorRequest />}></Route>
+        <Route path="productlist" element={<GetProduct />}></Route>
+        <Route path="addproduct" element={<AddProduct />}></Route>
         <Route
-          path="/productlist/updateproduct/:productId"
+          path="productlist/updateproduct/:productId"
           element={<UpdateProduct />}
         ></Route>
-        <Route path="/addcategories" element={<AddCategory />}></Route>
+        <Route path="addcategories" element={<AddCategory />}></Route>
         <Route path="/categorylist" element={<GetCategory />}></Route>
         <Route
-          path="/categorylist/updatecategory/:categoryId"
+          path="categorylist/updatecategory/:categoryId"
           element={<UpdateCategory />}
         ></Route>
-        <Route path="/addsubcategory" element={<AddSubCategory />}></Route>
-        <Route path="/getsubcategory" element={<GetSubCategory />}></Route>
+        <Route path="addsubcategory" element={<AddSubCategory />}></Route>
+        <Route path="getsubcategory" element={<GetSubCategory />}></Route>
         <Route
-          path="/getsubcategory/updatecategory/:id"
+          path="getsubcategory/updatecategory/:id"
           element={<UpdateSubCategory />}
         ></Route>
-        <Route path="/addbrand" element={<AddBrand />}></Route>
-        <Route path='/getbrand' element={<GetBrand/>}></Route>
-        <Route path='/getbrand/updatebrand/:id' element={<UpdateBrand/>}></Route>
-      
+        <Route path="addbrand" element={<AddBrand />}></Route>
+        <Route path='getbrand' element={<GetBrand/>}></Route>
+        <Route path='getbrand/updatebrand/:id' element={<UpdateBrand/>}></Route>
+        <Route path='getorder' element={<GetOrder/>}/>
+        <Route path='getorder/getorderdetails/:id' element={<OrderDetails/>}></Route>
       </Routes>
       <Footer />
     </div>

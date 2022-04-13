@@ -44,7 +44,7 @@ export const Updateuser = () => {
   };
 
   return (
-    <div>
+    <div className="content-wrapper">
       <form onSubmit={update}>
         <div class="form-group">
           <label>First Name</label>

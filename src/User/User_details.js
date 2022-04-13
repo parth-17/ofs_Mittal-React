@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import '../_css/Dashboard.css'
 
 
@@ -12,6 +11,7 @@ export const User_details = () => {
   const getData = () => {
       
     axios.get("http://localhost:4001/users").then((res) => {
+      console.log(res.data.data);
       console.log("rolename",res.data.data[0].role.roleName);
       console.log("isActive",res.data.data[0].isActive);
 
@@ -74,9 +74,6 @@ export const User_details = () => {
                   user.isActive? "True":"False"
                 }
               </td>
-              
-      
-
       
               
               {/* <td>{user.isActive}</td> */}

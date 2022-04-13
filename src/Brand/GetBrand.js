@@ -26,7 +26,7 @@ export const GetBrand = () => {
     <div className="content-wrapper card-body table-resposive col-md-10">
     <h1>This is Brand List</h1> 
       <h3 className="row-1 d-inline-flex">Brand</h3>
-      <Link to="/addbrand" className="btn btn-info float-right">
+      <Link to="addbrand" className="btn btn-info float-right">
         Add Brand
       </Link>
       <table className="table table-hover table-striped">
@@ -44,7 +44,7 @@ export const GetBrand = () => {
                 <th scope="row">{brand._id}</th>
                 <td>{brand.brandName}</td>
                 <td><button onClick={() => DeleteData(brand._id)} className='btn btn-danger'>DELETE</button>
-                <Link to={`/getbrand/updatebrand/${brand._id}`} className="btn btn-primary">UPDATE</Link>
+                <Link to={`updatebrand/${brand._id}`} className="btn btn-primary">UPDATE</Link>
                 </td>
               </tr>
             );

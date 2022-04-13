@@ -17,6 +17,7 @@ const submit = (e)=>{
     axios.post('http://localhost:4001/roles',Data).then(res =>{
         console.log(res.status)
         console.log(res.data)
+        alert("Data Added")
     })
 }
 

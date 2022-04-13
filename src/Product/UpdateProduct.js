@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 export const UpdateProduct = () => {
   var id = useParams().productId;
-  console.log("Id--", id);
+  // console.log("Id--", id);
 
   const [data, setData] = useState("");
   const [categoryList, setcategoryList] = useState([]);
@@ -19,22 +19,22 @@ export const UpdateProduct = () => {
   const getData = () => {
     axios.get(`http://localhost:4001/products/${id}`).then((res) => {
       setData(res.data.data);
-      console.log("--", res.data.data);
+      console.log("Default value --", res.data.data);
+      console.log('category Id', res.data.data.category);
+      console.log('subcategory Id',res.data.data.subcategory);
+      console.log('brand Id', res.data.data.brand);
     });
 
     axios.get(`http://localhost:4001/categories`).then((res) => {
       setcategoryList(res.data.data);
-      console.log("--", res.data.data);
+      // console.log("category data--", res.data.data);
     });
 
-    axios.get(`http://localhost:4001/subcategories`).then((res) => {
-      setsubcategoryList(res.data.data);
-      console.log("--", res.data.data);
-    });
+    
 
     axios.get(`http://localhost:4001/brands`).then((res) => {
       setbrandList(res.data.data);
-      console.log("--", res.data.data);
+      // console.log("brands--", res.data.data);
     });
   };
 
@@ -42,7 +42,7 @@ export const UpdateProduct = () => {
     getData();
   }, []);
 
-  console.log("product - Data", data);
+  // console.log("product - Data", data);
 
 
   const update = (e) => {
@@ -62,12 +62,38 @@ export const UpdateProduct = () => {
       });
   };
 
+
+  
+  const CategoryListOnChangeHandler = async (e) => {
+    var catid = e.target.value;
+    console.log("cat id:", e.target.value);
+      setCategory(e.target.value)
+
+    await axios
+      .get(`http://localhost:4001/subcategoriesbycategory/${catid}`)
+      .then((res) => {
+        setsubcategoryList(res.data.data);
+        console.log("sub cat data ", res.data.data);
+      });
+  };
+ 
+  const subcategoryOnHangeHandler = (e) =>{
+    console.log('sub-cate',e.target.value);
+    setSubcategory(e.target.value )
+    
+
+  } 
+
+  const BrandOnChangeHandler = (e) => {
+    console.log("brand", e.target.value);
+    setbrand(e.target.value);
+  };
+
   return (
     <div className=" content-wrapper card-body">
 
       {data.category !== undefined &&
-      data.subcategory !== undefined &&
-      data.brand !== undefined ? (
+      data.subcategory !== undefined  ? (
       <form onSubmit={update}>
         <div className=" form-group">
           <label>Product Name</label>
@@ -87,33 +113,97 @@ export const UpdateProduct = () => {
             onChange={(e) => setBaseprice(e.target.value)}
           />
         </div>
-        <div className=" form-group">
-          <label>Category</label>
-          <input
-            type="text"
-            class="form-control"
-            defaultValue={data.category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
-        </div>
-        <div className=" form-group">
-          <label>Sub-Category</label>
-          <input
-            type="text"
-            class="form-control"
-            defaultValue={data.subcategory}
-            onChange={(e) => setSubcategory(e.target.value)}
-          />
-        </div>
-        <div className=" form-group">
-          <label>Brand</label>
-          <input
-            type="text"
-            class="form-control"
-            defaultValue={data.brand}
-            onChange={(e) => setbrand(e.target.value)}
-          />
-        </div>
+        <div className=" form-group" data-select2-id="55">
+            <label>Category</label>
+            <select
+              className="form-control select2 select2-hidden-accessible"
+              data-select2-id="9"
+              tabindex="-1"
+              aria-hidden="true"
+              onChange={(e) => CategoryListOnChangeHandler(e)}
+            >
+              {categoryList.map((category) => {
+                if(category._id !== data.category._id){
+                return (
+                  <option
+                  value={category._id}
+                  >
+                    {category.categoryName}
+                  </option>
+                );
+              }
+              else{
+                return(
+                  <option
+                  selected
+                    value={category._id}
+                  >
+                    {category.categoryName}
+                  </option>
+                  )
+                }
+              })}
+            </select>
+          </div>
+          <div className=" form-group" data-select2-id="55">
+            <label>Sub-Category</label>
+            <select
+              className="form-control select2 select2-hidden-accessible"
+              data-select2-id="9"
+              tabindex="-1"
+              aria-hidden="true"
+              onChange={(e) => subcategoryOnHangeHandler(e)}
+              >
+              {subcategoryList.map((subcategory) => {
+                if(subcategory._id !== data.subcategory._id){
+                return (
+                  <option  
+                  value={subcategory._id}
+                  >
+                  {subcategory.subcategoryName}
+                    
+                  </option>
+                );
+                }else{
+                  return (
+                    <option  
+                    selected
+                    value={subcategory._id}
+                    >
+                    {subcategory.subcategoryName}
+                      
+                    </option>
+                  );
+                }
+              })}
+            </select>
+          </div>
+          
+          <div className=" form-group" data-select2-id="55">
+            <label>Brand</label>
+            <select
+              className="form-control select2 select2-hidden-accessible"
+              data-select2-id="9"
+              tabindex="-1"
+              aria-hidden="true"
+              onChange={(e) => {
+                BrandOnChangeHandler(e);
+              }}
+            >
+              
+              {brandList.map((brand) => {
+                if(brand._id !== data.brand._id){
+                return (<option 
+                value={brand._id}
+                >{brand.brandName}</option>)
+                }else{
+                  return (<option selected="selected"
+                value={brand._id}
+                >{brand.brandName}</option>)
+                };
+              })}
+            </select>
+          </div>
         <button type="submit" class="btn btn-primary">
           Submit
         </button>
